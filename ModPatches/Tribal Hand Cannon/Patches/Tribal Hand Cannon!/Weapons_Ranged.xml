@@ -33,6 +33,10 @@
 		</value>
 	</Operation>
 	
+	<Operation Class="PatchOperationRemove">
+		<xpath>Defs/ThingDef[defName="Tribal_Hand_Cannon"]/weaponTags</xpath>
+	</Operation>
+	
 	<!-- === Tribal Hand Cannon === -->
 	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
 		<defName>Tribal_Hand_Cannon</defName>
@@ -79,13 +83,10 @@
 		<researchPrerequisite>CE_Gunpowder</researchPrerequisite>
 	</Operation>
 	
-	<Operation Class="PatchOperationRemove">
-		<xpath>Defs/ThingDef[defName="Tribal_Hand_Cannon"]/weaponTags</xpath>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="Tribal_Hand_Cannon"]/techLevel</xpath>
 		<value>
-		  <li>NeolithicRangedBasic</li>
-		  <li>NeolithicRangedDecent</li>
-		  <li>NeolithicMeleeDecent</li>
-		  <li>NeolithicMeleeAdvanced</li>
+			<techLevel>Medieval</techLevel>
 		</value>
 	</Operation>
 	
