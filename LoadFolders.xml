@@ -551,6 +551,7 @@
 		<li IfModActive="Mlie.ToolmetricsRedux">ModPatches/Toolmetrics Redux</li>
 		<li IfModActive="TheSimpleDude42.ToolsOPlenty">ModPatches/Tools O'Plenty</li>
 		<li IfModActive="RicoFox233.TouhouStyle.ScarletDevil">ModPatches/TouhouStyle</li>
+    <li IfModActive="Gunmar.TribalHandCannon">ModPatches/Tribal Hand Cannon</li>
 		<li IfModActive="Gunmar.TribalWarriorSet">ModPatches/Tribal Warrior Set</li>
 		<li IfModActive="ALIEN.TsarArmory">ModPatches/Tsar Armory</li>
 		<li IfModActive="eatKenny.leafzxg.TurretCollection">ModPatches/Turret Collection</li>
