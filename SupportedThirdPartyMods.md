@@ -329,6 +329,7 @@ Mechanoid Bench 3   |
 Mechanoids Extraordinaire	|
 Mechanoid Master Blaser |
 Medieval Medicines 1.4 Medieval Overhaul Edition |
+Medieval Bowyer |
 Medical Supplements |
 Medical System Expansion	|
 Medieval Overhaul   |
@@ -355,6 +356,7 @@ Misc. Turrets   |
 Moa |
 Moonjelly Race  |
 More Archotech Garbage Continued  |
+More Armory! Midworld Arms Pack  |
 More Consumables And Mutagens Reworked |
 More Mechanoids	|
 More Medieval Helms and Armor	|
