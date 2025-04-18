@@ -165,6 +165,7 @@ Comigo's Fancy Floating Turrets |
 Communicable Diseases   |
 Cossacks of the Rim |
 Crowns and Regalia  |
+Crossbows  |
 Cupro's Alloys	|
 Cursed Guns |
 CutePenguin	|
@@ -535,6 +536,7 @@ Titan Vehicles Continued |
 Toolmetrics Redux (Continued)   |
 Tools O'Plenty  |
 TouhouStyle	|
+Tribal Hand Cannon |
 Tribal Warrior Set! |
 Tsar Armory	|
 Turret Collection	|

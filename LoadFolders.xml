@@ -117,6 +117,7 @@
 		<li IfModActive="ONegative.CommunicableDiseases">ModPatches/Communitable Diseases</li>
 		<li IfModActive="Jewsader.Cossacks.Rimworld_copy">ModPatches/Cossacks of the Rim</li>
 		<li IfModActive="Canon.CrownsandRegalia">ModPatches/Crowns and Regalia</li>
+		<li IfModActive="iexist.crossbows">ModPatches/Crossbows</li>
 		<li IfModActive="Mlie.CuprosAlloys">ModPatches/CuprosAlloys</li>
 		<li IfModActive="MyLegsAreOkay.CursedGunsReUp">ModPatches/Cursed Guns</li>
 		<li IfModActive="K.CyberNet">ModPatches/Cybernet</li>
@@ -314,6 +315,7 @@
 		<li IfModActive="Abraxas.MSERevived">ModPatches/Medical System Expansion - Revived</li>
 		<li IfModActive="MSE2.Core">ModPatches/Medical System Expansion 2</li>
 		<li IfModActive="Mlie.MedicalSupplements">ModPatches/Medicine Supplements (Continued)</li>
+		<li IfModActive="Arisher.Medieval.Bowyer">ModPatches/Medieval Bowyer</li>
 		<li IfModActive="JoeDaly.MedMeds.MO">ModPatches/Medieval Medicines 1.4 Medieval Overhaul Edition</li>
 		<li IfModActive="DankPyon.Medieval.Overhaul">ModPatches/Medieval Overhaul</li>
 		<li IfModActive="Turkler.MedievalOverhaul.ArcaneArchaeologists">ModPatches/Medieval Overhaul Arcane Archaeologists</li>
@@ -336,6 +338,7 @@
 		<li IfModActive="dninemfive.moa">ModPatches/Moa</li>
 		<li IfModActive="Moonjelly.Race.Mod, zal.moonjelly">ModPatches/Moonjelly Race</li>
 		<li IfModActive="Taranchuk.MoreArchotechGarbageContinued">ModPatches/More Archotech Garbage Continued</li>
+		<li IfModActive="wekk.mamap">ModPatches/More Armory! Midworld Arms Pack</li>
 		<li IfModActive="Meltup.MoreConsumablesAndMutagens.Reworked">ModPatches/More Consumables And Mutagens</li>
 		<li IfModActive="Domi.MoreMedievalHelms">ModPatches/More Medieval Helms and Armor</li>
 		<li IfModActive="Arquebus.MorePersonaTraits">ModPatches/More Persona Traits</li>
@@ -551,6 +554,7 @@
 		<li IfModActive="Mlie.ToolmetricsRedux">ModPatches/Toolmetrics Redux</li>
 		<li IfModActive="TheSimpleDude42.ToolsOPlenty">ModPatches/Tools O'Plenty</li>
 		<li IfModActive="RicoFox233.TouhouStyle.ScarletDevil">ModPatches/TouhouStyle</li>
+		<li IfModActive="Gunmar.TribalHandCannon">ModPatches/Tribal Hand Cannon</li>
 		<li IfModActive="Gunmar.TribalWarriorSet">ModPatches/Tribal Warrior Set</li>
 		<li IfModActive="ALIEN.TsarArmory">ModPatches/Tsar Armory</li>
 		<li IfModActive="eatKenny.leafzxg.TurretCollection">ModPatches/Turret Collection</li>
