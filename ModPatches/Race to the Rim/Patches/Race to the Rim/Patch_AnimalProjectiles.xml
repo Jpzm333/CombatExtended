@@ -14,6 +14,11 @@
 			defName="RttR_Furybreath" or
 			defName="RttR_StreamFlameBreath" or
 			defName="RttR_GasBall" or
+      defName="RttR_NadderBreathCE" or
+      defName="RttR_NightmareBreathCE" or
+      defName="RttR_RazorwhipBreathCE" or
+      defName="RttR_TerribleTerrorBreathCE" or
+      defName="RttR_StormcutterBreathCE" or
 			defName="RttR_WaterBreath"
 			]/thingClass
 		</xpath>
@@ -34,6 +39,11 @@
 			defName="RttR_Furybreath" or
 			defName="RttR_StreamFlameBreath" or
 			defName="RttR_GasBall" or
+      defName="RttR_NadderBreathCE" or
+      defName="RttR_NightmareBreathCE" or
+      defName="RttR_RazorwhipBreathCE" or
+      defName="RttR_TerribleTerrorBreathCE" or
+      defName="RttR_StormcutterBreathCE" or
 			defName="RttR_WaterBreath"
 			]/projectile
 		</xpath>
