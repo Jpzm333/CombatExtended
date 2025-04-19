@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+	<!-- === Melee Stuff === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[
+			defName="VSWEB_Gun_ExplosiveBoltPistol"
+			]/tools </xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>grip</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>2</power>
+					<cooldownTime>1.54</cooldownTime>
+					<chanceFactor>1.5</chanceFactor>
+					<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Grip</linkedBodyPartsGroup>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>muzzle</label>
+					<capacities>
+						<li>Poke</li>
+					</capacities>
+					<power>2</power>
+					<cooldownTime>1.54</cooldownTime>
+					<armorPenetrationBlunt>0.555</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+
+	<Operation Class="PatchOperationReplace">
+		<xpath>
+			Defs/ThingDef[
+			defName="VSWEB_Gun_ExplosiveBoltRifle" or
+			defName="VSWEB_Gun_ExplosiveBoltScattergun" or
+			defName="VSWEB_Gun_ExplosiveBoltSniper" or
+			defName="VSWEB_Gun_ExplosiveBoltMinigun" or
+			defName="VSWEB_Gun_FlackStormCannon"
+			]/tools </xpath>
+		<value>
+			<tools>
+				<li Class="CombatExtended.ToolCE">
+					<label>stock</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>1.55</cooldownTime>
+					<chanceFactor>1.5</chanceFactor>
+					<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Stock</linkedBodyPartsGroup>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>barrel</label>
+					<capacities>
+						<li>Blunt</li>
+					</capacities>
+					<power>5</power>
+					<cooldownTime>2.02</cooldownTime>
+					<armorPenetrationBlunt>1.630</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Barrel</linkedBodyPartsGroup>
+				</li>
+				<li Class="CombatExtended.ToolCE">
+					<label>muzzle</label>
+					<capacities>
+						<li>Poke</li>
+					</capacities>
+					<power>8</power>
+					<cooldownTime>1.55</cooldownTime>
+					<armorPenetrationBlunt>2.755</armorPenetrationBlunt>
+					<linkedBodyPartsGroup>Muzzle</linkedBodyPartsGroup>
+				</li>
+			</tools>
+		</value>
+	</Operation>
+	
+	<!-- === Explosive Bolt Rifle === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltRifle"]/verbs</xpath>
+		<value>
+			<verbs>
+				<li Class="CombatExtended.VerbPropertiesCE">
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<recoilAmount>1.10</recoilAmount>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_16mmExplosiveBolt_HE</defaultProjectile>
+					<warmupTime>0.4</warmupTime>
+					<range>55</range>
+					<burstShotCount>3</burstShotCount>
+					<ticksBetweenBurstShots>9</ticksBetweenBurstShots>
+					<soundCast>VSWEB_ExplosiveBoltShot_Light</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</li>
+			</verbs>
+		</value>
+	</Operation>
+	
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>VSWEB_Gun_ExplosiveBoltRifle</defName>
+		<statBases>
+			<Mass>7.54</Mass>
+			<RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+			<SightsEfficiency>1</SightsEfficiency>
+			<ShotSpread>0.05</ShotSpread>
+			<SwayFactor>1.32</SwayFactor>
+			<Bulk>8</Bulk>
+			<WorkToMake>36000</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>20</Steel>
+			<Plasteel>50</Plasteel>
+			<ComponentSpacer>10</ComponentSpacer>
+		</costList>
+		<AmmoUser>
+			<magazineSize>15</magazineSize>
+			<reloadTime>5</reloadTime>
+			<ammoSet>AmmoSet_16mmExplosiveBolt</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aimedBurstShotCount>3</aimedBurstShotCount>
+			<aiUseBurstMode>TRUE</aiUseBurstMode>
+			<aiAimMode>AimedShot</aiAimMode>
+		</FireModes>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_AI_AR</li>
+		</weaponTags>
+		<researchPrerequisite>ChargedShot</researchPrerequisite>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd" Inherit="false">
+        <xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltRifle"]/recipeMaker</xpath>
+        <value>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+        </value>
+    </Operation>
+			
+	<!-- === Explosive Bolt Pistol === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltPistol"]/verbs</xpath>
+		<value>
+			<verbs>
+				<li Class="CombatExtended.VerbPropertiesCE">
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<recoilAmount>2.3</recoilAmount>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_16mmExplosiveBolt_HE</defaultProjectile>
+					<warmupTime>0.4</warmupTime>
+					<range>14</range>
+					<soundCast>VSWEB_ExplosiveBoltShot_Light</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</li>
+			</verbs>
+		</value>
+	</Operation>
+	
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>VSWEB_Gun_ExplosiveBoltPistol</defName>
+		<statBases>
+			<Mass>5.55</Mass>
+			<RangedWeapon_Cooldown>0.36</RangedWeapon_Cooldown>
+			<SightsEfficiency>1.1</SightsEfficiency>
+			<ShotSpread>0.10</ShotSpread>
+			<SwayFactor>1.13</SwayFactor>
+			<Bulk>6</Bulk>
+			<WorkToMake>29000</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>10</Steel>
+			<Plasteel>30</Plasteel>
+			<ComponentSpacer>5</ComponentSpacer>
+		</costList>
+		<AmmoUser>
+			<magazineSize>5</magazineSize>
+			<reloadTime>3</reloadTime>
+			<ammoSet>AmmoSet_16mmExplosiveBolt</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aiAimMode>Snapshot</aiAimMode>
+		</FireModes>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_Sidearm</li>
+			<li>CE_OneHandedWeapon</li>
+		</weaponTags>
+		<researchPrerequisite>ChargedShot</researchPrerequisite>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd" Inherit="false"> 
+        <xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltPistol"]/recipeMaker</xpath>
+        <value>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+        </value>
+    </Operation>
+			
+	<!-- === Explosive Bolt Scattergun === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltScattergun"]/verbs</xpath>
+		<value>
+			<verbs>
+				<li Class="CombatExtended.VerbPropertiesCE">
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<recoilAmount>3.3</recoilAmount>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_16mmExplosiveScatterBolt_HE</defaultProjectile>
+					<warmupTime>0.5</warmupTime>
+					<range>20</range>
+					<soundCast>VSWEB_ExplosiveBoltShot_Shotgun</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</li>
+			</verbs>
+		</value>
+	</Operation>
+	
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>VSWEB_Gun_ExplosiveBoltScattergun</defName>
+		<statBases>
+			<Mass>7.83</Mass>
+			<RangedWeapon_Cooldown>0.45</RangedWeapon_Cooldown>
+			<SightsEfficiency>1</SightsEfficiency>
+			<ShotSpread>0.07</ShotSpread>
+			<SwayFactor>1.38</SwayFactor>
+			<Bulk>9.3</Bulk>
+			<WorkToMake>42000</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>30</Steel>
+			<Plasteel>55</Plasteel>
+			<ComponentSpacer>15</ComponentSpacer>
+		</costList>
+		<AmmoUser>
+			<magazineSize>8</magazineSize>
+			<reloadTime>5</reloadTime>
+			<ammoSet>AmmoSet_16mmExplosiveScatterBolt</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aiAimMode>Snapshot</aiAimMode>
+		</FireModes>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_AI_AssaultWeapon</li>
+		</weaponTags>
+		<researchPrerequisite>ChargedShot</researchPrerequisite>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd" Inherit="false">
+        <xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltScattergun"]/recipeMaker</xpath>
+        <value>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+        </value>
+    </Operation>
+	
+	<!-- === Explosive Bolt Sniper === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltSniper"]/verbs</xpath>
+		<value>
+			<verbs>
+				<li Class="CombatExtended.VerbPropertiesCE">
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<recoilAmount>1.40</recoilAmount>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_24mmExplosiveBolt_HE</defaultProjectile>
+					<warmupTime>1.6</warmupTime>
+					<range>75</range>
+					<soundCast>VSWEB_ExplosiveBoltShot_Sniper</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+				</li>
+			</verbs>
+		</value>
+	</Operation>
+	
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>VSWEB_Gun_ExplosiveBoltSniper</defName>
+		<statBases>
+			<Mass>8.02</Mass>
+			<RangedWeapon_Cooldown>0.50</RangedWeapon_Cooldown>
+			<SightsEfficiency>2.6</SightsEfficiency>
+			<ShotSpread>0.05</ShotSpread>
+			<SwayFactor>2.17</SwayFactor>
+			<Bulk>12.43</Bulk>
+			<WorkToMake>49000</WorkToMake>
+			<NightVisionEfficiency_Weapon>0.4</NightVisionEfficiency_Weapon>
+		</statBases>
+		<costList>
+			<Steel>45</Steel>
+			<Plasteel>60</Plasteel>
+			<ComponentSpacer>15</ComponentSpacer>
+		</costList>
+		<AmmoUser>
+			<magazineSize>4</magazineSize>
+			<reloadTime>5</reloadTime>
+			<ammoSet>AmmoSet_24mmExplosiveBolt</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aiAimMode>AimedShot</aiAimMode>
+		</FireModes>
+		<weaponTags>
+			<li>SniperRifle</li>
+			<li>SpacerGun</li>
+			<li>Bipod_DMR</li>
+		</weaponTags>
+		<researchPrerequisite>ChargedShot</researchPrerequisite>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd" Inherit="false">
+        <xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltSniper"]/recipeMaker</xpath>
+        <value>
+			<skillRequirements>
+				<Crafting>10</Crafting>
+			</skillRequirements>
+        </value>
+    </Operation>
+	
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltSniper"]</xpath>
+		<value>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1.10,1.10</DrawSize>
+				<DrawOffset>0.08,0.0</DrawOffset>
+				<CasingOffset>-0.05,0</CasingOffset>
+			</li>
+		</value>
+	</Operation>
+	
+	<!-- === Explosive Bolt Minigun === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltMinigun"]/verbs</xpath>
+		<value>
+			<verbs>
+				<li Class="CombatExtended.VerbPropertiesCE">
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<recoilAmount>1.04</recoilAmount>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_16mmExplosiveBolt_HE</defaultProjectile>
+					<warmupTime>1.5</warmupTime>
+					<range>55</range>
+					<burstShotCount>20</burstShotCount>
+					<ticksBetweenBurstShots>2.6</ticksBetweenBurstShots>
+					<soundCast>VSWEB_ExplosiveBoltShot_Light</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+				</li>
+			</verbs>
+		</value>
+	</Operation>
+	
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>VSWEB_Gun_ExplosiveBoltMinigun</defName>
+		<statBases>
+			<Mass>18.75</Mass>
+			<RangedWeapon_Cooldown>0.60</RangedWeapon_Cooldown>
+			<SightsEfficiency>1</SightsEfficiency>
+			<ShotSpread>0.08</ShotSpread>
+			<SwayFactor>1.38</SwayFactor>
+			<Bulk>14</Bulk>
+			<WorkToMake>58600</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>60</Steel>
+			<Plasteel>70</Plasteel>
+			<ComponentSpacer>20</ComponentSpacer>
+		</costList>
+		<AmmoUser>
+			<magazineSize>60</magazineSize>
+			<reloadTime>6</reloadTime>
+			<ammoSet>AmmoSet_16mmExplosiveBolt</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aimedBurstShotCount>10</aimedBurstShotCount>
+			<aiUseBurstMode>TRUE</aiUseBurstMode>
+			<aiAimMode>SuppressFire</aiAimMode>
+		</FireModes>
+		<weaponTags>
+			<li>SpacerGun</li>
+			<li>CE_MachineGun</li>
+			<li>Bipod_SAW</li>
+		</weaponTags>
+		<researchPrerequisite>ChargedShot</researchPrerequisite>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd" Inherit="false">
+        <xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltMinigun"]/recipeMaker</xpath>
+        <value>
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+        </value>
+    </Operation>
+	
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_ExplosiveBoltMinigun"]</xpath>
+		<value>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1.03,1.03</DrawSize>
+			</li>
+		</value>
+	</Operation>
+	
+	<!-- === Explosive Bolt Heavy Cannon === -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_FlackStormCannon"]/verbs</xpath>
+		<value>
+			<verbs>
+				<li Class="CombatExtended.VerbPropertiesCE">
+					<verbClass>CombatExtended.Verb_ShootCE</verbClass>
+					<recoilAmount>4</recoilAmount>
+					<hasStandardCommand>true</hasStandardCommand>
+					<defaultProjectile>Bullet_24mmExplosiveBolt_HE</defaultProjectile>
+					<warmupTime>1.6</warmupTime>
+					<range>71</range>
+					<burstShotCount>16</burstShotCount>
+					<ticksBetweenBurstShots>3.1</ticksBetweenBurstShots>
+					<soundCast>VSWEB_ExplosiveBoltShot_Heavy</soundCast>
+					<soundCastTail>GunTail_Heavy</soundCastTail>
+					<muzzleFlashScale>9</muzzleFlashScale>
+					<recoilPattern>Mounted</recoilPattern>
+					<targetParams>
+						<canTargetLocations>True</canTargetLocations>
+					</targetParams>
+				</li>
+			</verbs>
+		</value>
+	</Operation>
+	
+	<Operation Class="CombatExtended.PatchOperationMakeGunCECompatible">
+		<defName>VSWEB_Gun_FlackStormCannon</defName>
+		<statBases>
+			<Mass>25.75</Mass>
+			<RangedWeapon_Cooldown>0.9</RangedWeapon_Cooldown>
+			<SightsEfficiency>1</SightsEfficiency>
+			<ShotSpread>0.07</ShotSpread>
+			<SwayFactor>3.40</SwayFactor>
+			<Bulk>17</Bulk>
+			<WorkToMake>80600</WorkToMake>
+		</statBases>
+		<costList>
+			<Steel>100</Steel>
+			<Plasteel>90</Plasteel>
+			<ComponentSpacer>30</ComponentSpacer>
+		</costList>
+		<AmmoUser>
+			<magazineSize>80</magazineSize>
+			<reloadTime>8.8</reloadTime>
+			<ammoSet>AmmoSet_24mmExplosiveBolt</ammoSet>
+		</AmmoUser>
+		<FireModes>
+			<aimedBurstShotCount>8</aimedBurstShotCount>
+			<aiUseBurstMode>TRUE</aiUseBurstMode>
+			<aiAimMode>SuppressFire</aiAimMode>
+		</FireModes>
+		<weaponTags>
+			<li>GunHeavy</li>
+			<li>SpacerGun</li>
+		</weaponTags>
+		<researchPrerequisite>ChargedShot</researchPrerequisite>
+	</Operation>
+	
+	<Operation Class="PatchOperationAdd" Inherit="false">
+        <xpath>Defs/ThingDef[defName="VSWEB_Gun_FlackStormCannon"]/recipeMaker</xpath>
+        <value>
+			<skillRequirements>
+				<Crafting>12</Crafting>
+			</skillRequirements>
+        </value>
+    </Operation>
+	
+	<Operation Class="PatchOperationAddModExtension">
+		<xpath>Defs/ThingDef[defName="VSWEB_Gun_FlackStormCannon"]</xpath>
+		<value>
+			<li Class="CombatExtended.GunDrawExtension">
+				<DrawSize>1.06,1.06</DrawSize>
+			</li>
+		</value>
+	</Operation>
+	
+</Patch>
