@@ -592,6 +592,7 @@ Vanilla Races Expanded - Phytokin  |
 Vanilla Races Expanded - Sanguophage  |
 Vanilla Races Expanded - Saurid  |
 Vanilla Skills Expanded  |
+Vanilla Spacer Weapons - Explosive Bolt  |
 Vanilla Vehicles Expanded	|
 Vanilla Vehicles Expanded - Tier 3  |
 Vanilla Vehicles Expanded - Upgrades    |
