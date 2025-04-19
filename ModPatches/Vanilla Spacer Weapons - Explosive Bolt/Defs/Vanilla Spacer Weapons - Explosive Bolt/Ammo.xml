@@ -1,0 +1,933 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+	<ThingCategoryDef>
+		<defName>Ammo16mmExplosiveBolts</defName>
+		<label>16mm Explosive Bolt</label>
+		<parent>AmmoGrenades</parent>
+		<iconPath>Things/UI/Icons/ThingCategories/CaliberExplodingBolt</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_16mmExplosiveBolt</defName>
+		<label>16mm Explosive Bolts</label>
+		<ammoTypes>
+			<Ammo_16mmExplosiveBolt_HE>Bullet_16mmExplosiveBolt_HE</Ammo_16mmExplosiveBolt_HE>
+			<Ammo_16mmExplosiveBolt_HE_TFuzed>Bullet_16mmExplosiveBolt_HE_TFuzed</Ammo_16mmExplosiveBolt_HE_TFuzed>
+			<Ammo_16mmExplosiveBolt_APHE>Bullet_16mmExplosiveBolt_APHE</Ammo_16mmExplosiveBolt_APHE>
+		</ammoTypes>
+		<similarTo>AmmoSet_LauncherGrenade</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="16mmExplosiveBoltBase" ParentName="MediumAmmoBase" Abstract="True">
+		<description>Explosive bullet used in most War Marine weaponry.</description>
+		<statBases>
+			<Mass>0.18</Mass>
+			<Bulk>0.2</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo16mmExplosiveBolts</li>
+		</thingCategories>
+		<stackLimit>2500</stackLimit>
+		<cookOffFlashScale>20</cookOffFlashScale>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="16mmExplosiveBoltBase">
+		<defName>Ammo_16mmExplosiveBolt_HE</defName>
+		<label>16mm Explosive Bolt (HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.30</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_16mmExplosiveBolt_HE</detonateProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="16mmExplosiveBoltBase">
+		<defName>Ammo_16mmExplosiveBolt_HE_TFuzed</defName>
+		<label>16mm Explosive Bolt (HE Time-Fuzed)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>3.33</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHETF</ammoClass>
+		<detonateProjectile>Bullet_16mmExplosiveBolt_HE</detonateProjectile>
+	</ThingDef>
+	
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="16mmExplosiveBoltBase">
+		<defName>Ammo_16mmExplosiveBolt_APHE</defName>
+		<label>16mm Explosive Bolt (APHE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>3.33</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_16mmExplosiveBolt_APHE</detonateProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base16mmExplosiveBoltBullet" ParentName="BaseExplosiveBullet" Abstract="true">
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/ExplosiveBolt_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>172</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base16mmExplosiveBoltBullet">
+		<defName>Bullet_16mmExplosiveBolt_HE</defName>
+		<label>16mm Explosive Bolt</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>28</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>375.86</armorPenetrationBlunt>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>2</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Base16mmExplosiveBoltBullet">
+		<defName>Bullet_16mmExplosiveBolt_HE_TFuzed</defName>
+		<label>16mm Explosive Bolt (HE Time-Fuzed)</label>
+		<thingClass>CombatExtended.ProjectileCE_Bursting</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>28</damageAmountBase>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>375.86</armorPenetrationBlunt>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<aimHeightOffset>1.4</aimHeightOffset>
+			<armingDelay>1.5</armingDelay>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>2</Fragment_Small>
+				</fragments>
+				<fragAngleRange>-89~-5</fragAngleRange>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base16mmExplosiveBoltBullet">
+		<defName>Bullet_16mmExplosiveBolt_APHE</defName>
+		<label>16mm Explosive Bolt (APHE)</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>28</damageAmountBase>
+			<armorPenetrationSharp>27</armorPenetrationSharp>
+			<armorPenetrationBlunt>354.86</armorPenetrationBlunt>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>3</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>1</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_16mmExplosiveBolt_HE</defName>
+		<label>make 16mm Explosive Bolts x100</label>
+		<description>Craft 100 16mm Explosive Bolts.</description>
+		<jobString>Making 16mm Explosive Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>50</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_16mmExplosiveBolt_HE>100</Ammo_16mmExplosiveBolt_HE>
+		</products>
+		<workAmount>9800</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_16mmExplosiveBolt_HE_TFuzed</defName>
+		<label>make 16mm Explosive Bolts (HE Time-Fuzed) x100</label>
+		<description>Craft 100 16mm HE Time-Fuzed Explosive Bolts.</description>
+		<jobString>Making 16mm HE Time-Fuzed Explosive Bolts.</jobString>
+		<researchPrerequisite>CE_AdvancedLaunchers</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>54</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>7</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_16mmExplosiveBolt_HE_TFuzed>100</Ammo_16mmExplosiveBolt_HE_TFuzed>
+		</products>
+		<workAmount>11600</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_16mmExplosiveBolt_APHE</defName>
+		<label>make 16mm Explosive Bolts (APHE) x100</label>
+		<description>Craft 100 16mm APHE Explosive Bolts.</description>
+		<jobString>Making 16mm APHE Explosive Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>4</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_16mmExplosiveBolt_APHE>100</Ammo_16mmExplosiveBolt_APHE>
+		</products>
+		<workAmount>10000</workAmount>
+	</RecipeDef>
+
+	<ThingCategoryDef>
+		<defName>Ammo24mmExplosiveBolts</defName>
+		<label>24mm Explosive Bolt</label>
+		<parent>AmmoGrenades</parent>
+		<iconPath>Things/UI/Icons/ThingCategories/CaliberExplodingBolt</iconPath>
+	</ThingCategoryDef>
+
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_24mmExplosiveBolt</defName>
+		<label>24mm Explosive Bolts</label>
+		<ammoTypes>
+			<Ammo_24mmExplosiveBolt_HE>Bullet_24mmExplosiveBolt_HE</Ammo_24mmExplosiveBolt_HE>
+			<Ammo_24mmExplosiveBolt_HE_TFuzed>Bullet_24mmExplosiveBolt_HE_TFuzed</Ammo_24mmExplosiveBolt_HE_TFuzed>
+			<Ammo_24mmExplosiveBolt_APHE>Bullet_24mmExplosiveBolt_APHE</Ammo_24mmExplosiveBolt_APHE>
+		</ammoTypes>
+		<similarTo>AmmoSet_LauncherGrenade</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="24mmExplosiveBoltBase" ParentName="MediumAmmoBase" Abstract="True">
+		<description>Large explosive bullet used in heavy War Marine weaponry.</description>
+		<statBases>
+			<Mass>0.24</Mass>
+			<Bulk>0.20</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo24mmExplosiveBolts</li>
+		</thingCategories>
+		<stackLimit>1500</stackLimit>
+		<cookOffFlashScale>20</cookOffFlashScale>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="24mmExplosiveBoltBase">
+		<defName>Ammo_24mmExplosiveBolt_HE</defName>
+		<label>24mm Explosive Bolt (HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.87</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_24mmExplosiveBolt_HE</detonateProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="24mmExplosiveBoltBase">
+		<defName>Ammo_24mmExplosiveBolt_HE_TFuzed</defName>
+		<label>24mm Explosive Bolt (HE Time-Fuzed)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>3.84</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHETF</ammoClass>
+		<detonateProjectile>Bullet_24mmExplosiveBolt_HE</detonateProjectile>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="24mmExplosiveBoltBase">
+		<defName>Ammo_24mmExplosiveBolt_APHE</defName>
+		<label>24mm Explosive Bolt (APHE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.71</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_24mmExplosiveBolt_APHE</detonateProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base24mmExplosiveBoltBullet" ParentName="BaseExplosiveBullet" Abstract="true">
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/ExplosiveBolt_Large</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>50</speed>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ProjectileFleck">
+				<FleckDatas>
+					<li>
+						<fleck>Fleck_CERocketFlame</fleck>
+						<emissionsPerTick>8</emissionsPerTick>
+						<flecksPerEmission>2</flecksPerEmission>
+						<scale>0.35</scale>
+						<originOffset>0</originOffset>
+						<cutoffTickRange>45~60</cutoffTickRange>
+					</li>
+				</FleckDatas>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Base24mmExplosiveBoltBullet">
+		<defName>Bullet_24mmExplosiveBolt_HE</defName>
+		<label>24mm Explosive Bolt</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>36</damageAmountBase>
+			<armorPenetrationSharp>38</armorPenetrationSharp>
+			<armorPenetrationBlunt>481.7</armorPenetrationBlunt>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>6</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Base24mmExplosiveBoltBullet">
+		<defName>Bullet_24mmExplosiveBolt_HE_TFuzed</defName>
+		<label>24mm Explosive Bolt (HE Time-Fuzed)</label>
+		<thingClass>CombatExtended.ProjectileCE_Bursting</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>36</damageAmountBase>
+			<armorPenetrationSharp>38</armorPenetrationSharp>
+			<armorPenetrationBlunt>481.7</armorPenetrationBlunt>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<aimHeightOffset>1.4</aimHeightOffset>
+			<armingDelay>1.4</armingDelay>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>6</Fragment_Small>
+				</fragments>
+				<fragAngleRange>-89~-5</fragAngleRange>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<ThingDef ParentName="Base24mmExplosiveBoltBullet">
+		<defName>Bullet_24mmExplosiveBolt_APHE</defName>
+		<label>24mm Explosive Bolt (APHE)</label>
+		<thingClass>CombatExtended.BulletCE</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bullet</damageDef>
+			<damageAmountBase>36</damageAmountBase>
+			<armorPenetrationSharp>46</armorPenetrationSharp>
+			<armorPenetrationBlunt>532.3</armorPenetrationBlunt>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>8</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_ExplosiveCE">
+				<damageAmountBase>14</damageAmountBase>
+				<explosiveDamageType>Bomb</explosiveDamageType>
+				<explosiveRadius>0.5</explosiveRadius>
+				<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			</li>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>3</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_24mmExplosiveBolt_HE</defName>
+		<label>make 24mm Explosive Bolts x100</label>
+		<description>Craft 100 24mm Explosive Bolts.</description>
+		<jobString>Making 24mm Explosive Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_24mmExplosiveBolt_HE>100</Ammo_24mmExplosiveBolt_HE>
+		</products>
+		<workAmount>10400</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_24mmExplosiveBolt_HE_TFuzed</defName>
+		<label>make 24mm HE Time-Fuzed Explosive Bolts x100</label>
+		<description>Craft 100 24mm HE Time-Fuzed Explosive Bolts.</description>
+		<jobString>Making 24mm HE Time-Fuzed Explosive Bolts.</jobString>
+		<researchPrerequisite>CE_AdvancedLaunchers</researchPrerequisite>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>66</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>6</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_24mmExplosiveBolt_HE_TFuzed>100</Ammo_24mmExplosiveBolt_HE_TFuzed>
+		</products>
+		<workAmount>13200</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_24mmExplosiveBolt_APHE</defName>
+		<label>make 24mm Explosive Bolts x100</label>
+		<description>Craft 100 24mm Explosive Bolts.</description>
+		<jobString>Making 24mm APHE Explosive Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>70</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>8</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>2</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_24mmExplosiveBolt_APHE>100</Ammo_24mmExplosiveBolt_APHE>
+		</products>
+		<workAmount>12600</workAmount>
+	</RecipeDef>
+	
+	<ThingCategoryDef>
+		<defName>Ammo16mmExplosiveScatterBolts</defName>
+		<label>16mm Explosive Scatter Bolt</label>
+		<parent>AmmoGrenades</parent>
+		<iconPath>Things/UI/Icons/ThingCategories/CaliberExplodingBolt</iconPath>
+	</ThingCategoryDef>
+	
+	<!-- ==================== AmmoSet ========================== -->
+
+	<CombatExtended.AmmoSetDef>
+		<defName>AmmoSet_16mmExplosiveScatterBolt</defName>
+		<label>16mm Explosive Scatter Bolts</label>
+		<ammoTypes>
+			<Ammo_16mmExplosiveScatterBolt_HE>Bullet_16mmExplosiveScatterBolt_HE</Ammo_16mmExplosiveScatterBolt_HE>
+			<Ammo_16mmExplosiveScatterBolt_HE_TFuzed>Bullet_16mmExplosiveScatterBolt_HE_TFuzed</Ammo_16mmExplosiveScatterBolt_HE_TFuzed>
+			<Ammo_16mmExplosiveScatterBolt_APHE>Bullet_16mmExplosiveScatterBolt_APHE</Ammo_16mmExplosiveScatterBolt_APHE>
+		</ammoTypes>
+		<similarTo>AmmoSet_LauncherGrenade</similarTo>
+	</CombatExtended.AmmoSetDef>
+
+	<!-- ==================== Ammo ========================== -->
+
+	<ThingDef Class="CombatExtended.AmmoDef" Name="16mmExplosiveScatterBoltBase" ParentName="MediumAmmoBase" Abstract="True">
+		<description>Explosive bullet used in War Marine CQB weaponry.</description>
+		<statBases>
+			<Mass>0.18</Mass>
+			<Bulk>0.2</Bulk>
+		</statBases>
+		<tradeTags>
+			<li>CE_AutoEnableTrade</li>
+			<li>CE_AutoEnableCrafting_FabricationBench</li>
+		</tradeTags>
+		<thingCategories>
+			<li>Ammo16mmExplosiveScatterBolts</li>
+		</thingCategories>
+		<stackLimit>2500</stackLimit>
+		<cookOffFlashScale>20</cookOffFlashScale>
+	</ThingDef>
+
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="16mmExplosiveScatterBoltBase">
+		<defName>Ammo_16mmExplosiveScatterBolt_HE</defName>
+		<label>16mm Explosive Scatter Bolt (HE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.30</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_16mmExplosiveScatterBolt_HE</detonateProjectile>
+	</ThingDef>
+	
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="16mmExplosiveScatterBoltBase">
+		<defName>Ammo_16mmExplosiveScatterBolt_HE_TFuzed</defName>
+		<label>16mm Explosive Scatter Bolt (HE Time-Fuzed)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>2.30</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_16mmExplosiveScatterBolt_HE</detonateProjectile>
+	</ThingDef>
+	
+	<ThingDef Class="CombatExtended.AmmoDef" ParentName="16mmExplosiveScatterBoltBase">
+		<defName>Ammo_16mmExplosiveScatterBolt_APHE</defName>
+		<label>16mm Explosive Scatter Bolt (APHE)</label>
+		<graphicData>
+			<texPath>Things/Ammo/SpacerExplosiveBolt</texPath>
+			<graphicClass>Graphic_StackCount</graphicClass>
+		</graphicData>
+		<statBases>
+			<MarketValue>3.33</MarketValue>
+		</statBases>
+		<ammoClass>GrenadeHE</ammoClass>
+		<detonateProjectile>Bullet_16mmExplosiveScatterBolt_APHE</detonateProjectile>
+	</ThingDef>
+
+	<!-- ================== Projectiles ================== -->
+
+	<ThingDef Name="Base16mmExplosiveScatterBoltBullet" ParentName="BaseExplosiveBullet" Abstract="true">
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<graphicData>
+			<texPath>Things/Projectile/ExplosiveBolt_Small</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+		</graphicData>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<speed>158</speed>
+		</projectile>
+	</ThingDef>
+
+	<ThingDef ParentName="Base16mmExplosiveScatterBoltBullet">
+		<defName>Bullet_16mmExplosiveScatterBolt_HE</defName>
+		<label>16mm Explosive Bolt</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>18</armorPenetrationSharp>
+			<armorPenetrationBlunt>305.86</armorPenetrationBlunt>
+			<pelletCount>12</pelletCount>
+			<spreadMult>8.9</spreadMult>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>1</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base16mmExplosiveScatterBoltBullet">
+		<defName>Bullet_16mmExplosiveScatterBolt_HE_TFuzed</defName>
+		<label>16mm Explosive Bolt (HE Time-Fuzed)</label>
+		<thingClass>CombatExtended.ProjectileCE_Bursting</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>20</damageAmountBase>
+			<armorPenetrationSharp>16</armorPenetrationSharp>
+			<armorPenetrationBlunt>305.86</armorPenetrationBlunt>
+			<pelletCount>10</pelletCount>
+			<spreadMult>8.9</spreadMult>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<aimHeightOffset>1.4</aimHeightOffset>
+			<armingDelay>1.1</armingDelay>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>2</Fragment_Small>
+				</fragments>
+				<fragAngleRange>-89~-5</fragAngleRange>
+			</li>
+		</comps>
+	</ThingDef>
+	
+	<ThingDef ParentName="Base16mmExplosiveScatterBoltBullet">
+		<defName>Bullet_16mmExplosiveScatterBolt_APHE</defName>
+		<label>16mm Explosive Bolt (APHE)</label>
+		<thingClass>CombatExtended.ProjectileCE_Explosive</thingClass>
+		<projectile Class="CombatExtended.ProjectilePropertiesCE">
+			<damageDef>Bomb</damageDef>
+			<damageAmountBase>19</damageAmountBase>
+			<pelletCount>8</pelletCount>
+			<armorPenetrationSharp>24</armorPenetrationSharp>
+			<armorPenetrationBlunt>302</armorPenetrationBlunt>
+			<spreadMult>8.9</spreadMult>
+			<explosionRadius>1</explosionRadius>
+			<applyDamageToExplosionCellsNeighbors>true</applyDamageToExplosionCellsNeighbors>
+			<secondaryDamage>
+				<li>
+					<def>Bomb_Secondary</def>
+					<amount>4</amount>
+				</li>
+			</secondaryDamage>
+		</projectile>
+		<comps>
+			<li Class="CombatExtended.CompProperties_Fragments">
+				<fragments>
+					<Fragment_Small>1</Fragment_Small>
+				</fragments>
+			</li>
+		</comps>
+	</ThingDef>
+
+	<!-- ==================== Recipes ========================== -->
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_16mmExplosiveScatterBolt_HE</defName>
+		<label>make 16mm Explosive Scatter Bolts x100</label>
+		<description>Craft 100 16mm Explosive Scatter Bolts.</description>
+		<jobString>Making 16mm Explosive Scatter Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>60</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>10</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>3</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_16mmExplosiveScatterBolt_HE>100</Ammo_16mmExplosiveScatterBolt_HE>
+		</products>
+		<workAmount>10800</workAmount>
+	</RecipeDef>
+	
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_16mmExplosiveScatterBolt_HE_TFuzed</defName>
+		<label>make 16mm Explosive Scatter Bolts (HE Time-Fuzed) x100</label>
+		<description>Craft 100 16mm HE Time-Fuzed Explosive Scatter Bolts.</description>
+		<jobString>Making 16mm HE Time-Fuzed Explosive Scatter Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>80</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>35</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_16mmExplosiveScatterBolt_HE_TFuzed>100</Ammo_16mmExplosiveScatterBolt_HE_TFuzed>
+		</products>
+		<workAmount>13800</workAmount>
+	</RecipeDef>
+
+	<RecipeDef ParentName="LauncherAmmoRecipeBase">
+		<defName>MakeAmmo_16mmExplosiveScatterBolt_APHE</defName>
+		<label>make 16mm Explosive Scatter Bolts (APHE) x100</label>
+		<description>Craft 100 16mm APHE Explosive Scatter Bolts.</description>
+		<jobString>Making 16mm APHE Explosive Scatter Bolts.</jobString>
+		<ingredients>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>Steel</li>
+					</thingDefs>
+				</filter>
+				<count>75</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>FSX</li>
+					</thingDefs>
+				</filter>
+				<count>14</count>
+			</li>
+			<li>
+				<filter>
+					<thingDefs>
+						<li>ComponentIndustrial</li>
+					</thingDefs>
+				</filter>
+				<count>5</count>
+			</li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>Steel</li>
+				<li>FSX</li>
+				<li>ComponentIndustrial</li>
+			</thingDefs>
+		</fixedIngredientFilter>
+		<products>
+			<Ammo_16mmExplosiveScatterBolt_APHE>100</Ammo_16mmExplosiveScatterBolt_APHE>
+		</products>
+		<workAmount>11500</workAmount>
+	</RecipeDef>
+	
+</Defs>
